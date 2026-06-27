@@ -71,6 +71,82 @@ Rescue team can respond faster
 
 ---
 
+## Visual Walkthrough
+
+### Prototype Build
+
+The final prototype combines the quadcopter drone frame, GPS module, camera, Raspberry Pi-based image-processing unit, and custom 3D-printed support components.
+
+<p align="center">
+  <img src="assets/drone_built.png" alt="Drone Prototype" width="600">
+  <img src="assets/drone_flight_test.png" alt="Drone Prototype" width="600">
+</p>
+
+<p align="center">
+  <b>Final drone prototype with mounted camera, GPS module, and image-processing unit</b>
+</p>
+
+---
+
+### System Workflow
+
+The drone continuously monitors the water body, captures live footage, processes the feed on Raspberry Pi using YOLO/OpenCV, and displays detection output to the ground station.
+
+<p align="center">
+  <img src="assets/system_workflow.png" alt="Drone Drowning Detection Workflow" width="300">
+</p>
+
+<p align="center">
+  <b>End-to-end workflow from drone monitoring to ground-station display</b>
+</p>
+
+---
+
+### Custom 3D-Printed Components
+
+Custom-designed and 3D-printed parts were used to improve component mounting, support the drone structure, and protect the onboard image-processing hardware.
+
+<p align="center">
+  <img src="assets/drone_parts_3d_printing.png" alt="3D Printed Drone Parts" width="400">
+  <img src="assets/drone_parts_3d_printing_machine.png" alt="3D Printed Drone Parts Machine" width="600">
+</p>
+
+<p align="center">
+  <b>3D-designed and printed drone support structures, landing gear, and Raspberry Pi casing</b>
+</p>
+
+---
+
+### Drowning Detection Output
+
+The detection model analyzes aerial footage and marks the detected drowning-risk subject using a bounding box and label.
+
+<p align="center">
+  <img src="assets/drowning_detection_ouput.png" alt="Drowning Detection Output" width="700">
+  <img src="assets/drowning_detection_live.png" alt="Drowning Detection Live" width="700">
+</p>
+
+<p align="center">
+  <b>Sample drowning-detection output using object detection</b>
+</p>
+
+---
+
+### Ground Station and GPS Monitoring
+
+Mission Planner was used for drone setup, GPS monitoring, and ground-station visualization during testing.
+
+<p align="center">
+  <img src="assets/gps_output_campus.png" alt="Mission Planner GPS Campus" width="800">
+  <img src="assets/gps_output.png" alt="Mission Planner GPS Output" width="800">
+</p>
+
+<p align="center">
+  <b>Ground-station view showing GPS and Mission Planner monitoring</b>
+</p>
+
+---
+
 ## System Architecture
 
 | Component                 | Purpose                                                                  |
@@ -105,6 +181,7 @@ Rescue team can respond faster
 | Testing                  | Tested drone flight, real-time detection, communication, and prototype performance                            |
 
 ---
+
 ## Prototype Results
 
 | Metric                                   |        Result |
@@ -119,7 +196,10 @@ Rescue team can respond faster
 | Prototype cost                           |  ~$481.45 USD |
 | Cost excluding rented items              |  ~$306.23 USD |
 
+> Cost conversion is approximate and based on the INR to USD exchange rate used at the time of documentation.
+
 ---
+
 ## Key Features
 
 | Feature                    | Description                                                     |
@@ -130,7 +210,7 @@ Rescue team can respond faster
 | Bounding Box Output        | Displays detected person location visually                      |
 | Ground Station View        | Enables operator monitoring through VNC                         |
 | GPS-Aware System Design    | Supports location-focused rescue response planning              |
-| Public Safety Use Case     | Designed for beaches, lakes, pools and remote water bodies      |
+| Public Safety Use Case     | Designed for beaches, lakes, pools, and remote water bodies     |
 
 ---
 
@@ -154,33 +234,35 @@ drone-drowning-detection/
 │   └── project_synopsis.pdf
 │
 ├── presentations/
-│   ├── project_review_1.pptx
-│   └── final_review.pptx
+│   └── Project_Idea_Presentation.pdf
 │
 ├── assets/
-│   ├── system_block_diagram.png
-│   ├── overall_algorithm.png
-│   ├── drone_prototype.png
-│   ├── sample_detection_output.png
-│   └── performance_summary.png
-│
-└── outputs/
-    └── sample_output_placeholder.txt
+    ├── drone_built.png
+    ├── drone_flight_test.png
+    ├── drone_parts_3d_printing.png
+    ├── drone_parts_3d_printing_machine.png
+    ├── drowning_detection_live.png
+    ├── drowning_detection_ouput.png
+    ├── gps_output.png
+    ├── gps_output_campus.png
+    └── system_workflow.png
+
+
 ```
 
 ---
 
 ## Important Files
 
-| File                                | Description                                                                      |
-| ----------------------------------- | -------------------------------------------------------------------------------- |
-| src/person_detection_baseline.py    | Baseline OpenCV-based person detection script                                    |
-| config/dataset.yaml                 | Dataset configuration file for object-detection training                         |
-| reports/project_report.pdf          | Full project report with hardware, software, implementation and testing details  |
-| reports/project_synopsis.pdf        | Concise project synopsis                                                         |
-| presentations/project_review_1.pptx | Initial project review presentation                                              |
-| presentations/final_review.pptx     | Final project review presentation                                                |
-| assets/                             | Visual diagrams, prototype photos, detection screenshots                         |
+| File                                | Description                                                                               |
+| ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| src/person_detection_baseline.py    | Baseline OpenCV-based person detection script                                             |
+| config/dataset.yaml                 | Dataset configuration file for object-detection training                                  |
+| reports/project_report.pdf          | Full project report with hardware, software, implementation, and testing details          |
+| reports/project_synopsis.pdf        | Concise project synopsis                                                                  |
+| presentations/project_review_1.pptx | Initial project review presentation                                                       |
+| presentations/final_review.pptx     | Final project review presentation                                                         |
+| assets/                             | Visual diagrams, prototype photos, detection screenshots, GPS output, and workflow images |
 
 ---
 
@@ -238,6 +320,7 @@ numpy
 opencv-python
 matplotlib
 ultralytics
+PyYAML
 ```
 
 ---
@@ -258,13 +341,13 @@ This project demonstrates how computer vision and drone technology can be combin
 
 ## Limitations
 
-| Limitation               | Explanation                                                                            |
-| ------------------------ | -------------------------------------------------------------------------------------- |
-| Battery Life             | Prototype battery performance limited continuous flight time                           |
-| Processing Lag           | Real-time footage had an observed delay of around 5 seconds                            |
-| Environmental Conditions | Weather, lighting, water movement, and visibility can affect detection quality         |
-| Dataset Size             | Model performance can improve with a larger and more diverse drowning-specific dataset |
-| Testing Constraints      | Real-world testing was limited by location availability, weather and safety conditions          |
+| Limitation               | Explanation                                                                             |
+| ------------------------ | --------------------------------------------------------------------------------------- |
+| Battery Life             | Prototype battery performance limited continuous flight time                            |
+| Processing Lag           | Real-time footage had an observed delay of around 5 seconds                             |
+| Environmental Conditions | Weather, lighting, water movement, and visibility can affect detection quality          |
+| Dataset Size             | Model performance can improve with a larger and more diverse drowning-specific dataset  |
+| Testing Constraints      | Real-world testing was limited by location availability, weather, and safety conditions |
 
 ---
 
@@ -284,21 +367,23 @@ This project demonstrates how computer vision and drone technology can be combin
 
 ## Skills Demonstrated
 
-| Area                    | Skills                                                                           |
-| ----------------------- | -------------------------------------------------------------------------------- |
-| Computer Vision         | OpenCV, YOLO, image processing, object detection                                 |
-| Data Workflow           | Dataset preparation, annotation, YAML configuration, model training workflow     |
-| Hardware Integration    | Drone assembly, Raspberry Pi integration, camera setup, GPS module               |
-| Software Implementation | Python scripting, video capture, bounding-box visualization                      |
-| Systems Thinking        | Drone-to-ground-station communication and rescue workflow design                 |
-| Product Thinking        | Public-safety use case, operational constraints, future roadmap                  |
-| Analytical Thinking     | testing observations, limitations, and improvement planning                      |
+| Area                    | Skills                                                                       |
+| ----------------------- | ---------------------------------------------------------------------------- |
+| Computer Vision         | OpenCV, YOLO, image processing, object detection                             |
+| Data Workflow           | Dataset preparation, annotation, YAML configuration, model training workflow |
+| Hardware Integration    | Drone assembly, Raspberry Pi integration, camera setup, GPS module           |
+| Software Implementation | Python scripting, video capture, bounding-box visualization                  |
+| Systems Thinking        | Drone-to-ground-station communication and rescue workflow design             |
+| Product Thinking        | Public-safety use case, operational constraints, future roadmap              |
+| Analytical Thinking     | Testing observations, limitations, and improvement planning                  |
 
 ---
 
-It highlights the ability to:
+## Portfolio Relevance
 
-* Frame a real-world problem
+This project highlights the ability to:
+
+* Frame a real-world public-safety problem
 * Design a system-level solution
 * Work with data, models, hardware, and software
 * Communicate technical work in a business-impact-focused way
@@ -309,8 +394,9 @@ It highlights the ability to:
 
 <div align="center">
 
-### Author - **Hrishad Amre**  
-Electronics and Telecommunication Engineering
-<br>
+### Author - **Hrishad Amre**
+
+Electronics and Telecommunication Engineering <br>
 Goa College of Engineering
+
 </div>
