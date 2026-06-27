@@ -105,7 +105,6 @@ Rescue team can respond faster
 | Testing                  | Tested drone flight, real-time detection, communication, and prototype performance                            |
 
 ---
-
 ## Prototype Results
 
 | Metric                                   |        Result |
@@ -117,11 +116,10 @@ Rescue team can respond faster
 | Raspberry Pi hotspot communication range |          90 m |
 | Average detection distance               |         4–5 m |
 | Real-time processing lag                 |  Around 5 sec |
-| Prototype cost                           |       ₹45,430 |
-| Cost excluding rented items              |       ₹28,896 |
+| Prototype cost                           |  ~$481.45 USD |
+| Cost excluding rented items              |  ~$306.23 USD |
 
 ---
-
 ## Key Features
 
 | Feature                    | Description                                                     |
