@@ -1,0 +1,8 @@
+path: '/content/gdrive/My Drive/project/data'
+train: 'images/train'
+val: 'images/train'
+
+names:
+  0: drown
+  1: critical
+  2: Critical
