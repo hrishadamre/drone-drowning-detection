@@ -252,6 +252,12 @@ drone-drowning-detection/
 
 ---
 
+## Setup and Usage
+
+For installation steps, dependencies, and running instructions, see: [Setup Guide](SETUP.md)
+
+---
+
 ## Results and Business Impact
 
 This project demonstrates how computer vision and drone technology can be combined to support faster emergency response in water-safety scenarios.
